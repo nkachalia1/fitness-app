@@ -6,6 +6,7 @@ const RECEIVE_USER_RUNS = "runs/RECEIVE_USER_RUNS";
 const RECEIVE_NEW_RUN = "runs/RECEIVE_NEW_RUN";
 const RECEIVE_RUN_ERRORS = "runs/RECEIVE_RUN_ERRORS";
 const CLEAR_RUN_ERRORS = "runs/CLEAR_RUN_ERRORS";
+const SAVE_PREVIOUS_RUN = 'runs/SAVE_PREVIOUS_RUN';
 
 const receiveRuns = runs => ({
   type: RECEIVE_RUNS,
@@ -30,6 +31,10 @@ const receiveErrors = errors => ({
 export const clearRunErrors = errors => ({
     type: CLEAR_RUN_ERRORS,
     errors
+});
+
+export const savePreviousRun = () => ({
+  type: SAVE_PREVIOUS_RUN,
 });
 
 export const fetchRuns = () => async dispatch => {
@@ -105,7 +110,7 @@ export const updateRun = (runId, updatedRunData) => async dispatch => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
-        // 'X-CSRF-Token': csrfToken, 
+        // 'X-CSRF-Token': csrfToken,
       },
       body: JSON.stringify(updatedRunData)
     });
@@ -187,6 +192,8 @@ const runsReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
         return { ...state, user: action.runs, new: undefined};
       case RECEIVE_NEW_RUN:
         return { ...state, new: action.run};
+      case SAVE_PREVIOUS_RUN:
+        return { ...state, previous: state.new };
       case RECEIVE_USER_LOGOUT:
         return { ...state, user: {}, new: undefined }
         case UPDATE_RUN_SUCCESS:

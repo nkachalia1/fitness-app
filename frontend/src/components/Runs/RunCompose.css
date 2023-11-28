@@ -1,4 +1,4 @@
-
+/*
 input[type=textarea] {
     min-height: 30px;
     min-width: 393px;
@@ -8,3 +8,22 @@ input[type=textarea] {
   .run-preview {
     min-height: 150px;
   }
+
+
+ */
+
+
+
+
+
+
+
+input[type=number] {
+  min-height: 30px;
+  min-width: 393px;
+  margin-top: 5px;
+}
+
+.run-preview {
+  min-height: 150px;
+}
