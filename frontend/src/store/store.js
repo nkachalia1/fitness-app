@@ -3,13 +3,15 @@ import thunk from 'redux-thunk';
 import session from './session';
 import errors from './errors';
 import runs from './runs';
-import ui from './ui'; 
+import ui from './ui';
+import profileReducer from '../components/UserProfile/ProfileReducer';
 
 const rootReducer = combineReducers({
   runs,
   session,
   errors,
-  ui
+  ui,
+  profile: profileReducer,
 });
 
 let enhancer;
