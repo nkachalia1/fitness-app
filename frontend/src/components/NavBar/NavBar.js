@@ -5,6 +5,7 @@ import { logout, login } from '../../store/session';
 import { openModal, closeModal } from "../../store/ui";
 
 function NavBar () {
+  debugger
   const loggedIn = useSelector(state => !!state.session.user);
   const dispatch = useDispatch();
 

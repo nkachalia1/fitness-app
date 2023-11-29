@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './UserProfile.css';
-import { saveUserProfileToDBThunk, getUserProfileFromDBThunk } from './profileThunks';
+import { saveUserProfileToDBThunk, getUserProfileFromDBThunk } from './ProfileThunks';
 import { saveUserProfileToDB, getUserProfileFromDB } from './ProfileActions';
 
 const UserProfile = () => {
+  debugger
   const dispatch = useDispatch();
   const profileInfo = useSelector(state => state.profile.profileData);
   const user = useSelector(state => state.session.user);
   const loggedIn = useSelector(state => !!state.session.user);
+
+  debugger
 
    // State to hold user profile data
    const [profileData, setProfileData] = useState({
@@ -19,6 +22,8 @@ const UserProfile = () => {
     weight: '',
   });
 
+  debugger
+
     // Function to handle form input changes
     const handleInputChange = (e) => {
       const { name, value } = e.target;
@@ -28,18 +33,26 @@ const UserProfile = () => {
       }));
     };
 
+    debugger
+
     const handleSubmit = (e) => {
       e.preventDefault();
       dispatch(saveUserProfileToDB(profileData));
     };
 
+    debugger
+
     useEffect(() => {
       dispatch(getUserProfileFromDB());
     }, [dispatch]);
 
+    debugger
+
   if (!user) {
     return null;
   }
+
+  debugger
 
   if (loggedIn) {
     return (
