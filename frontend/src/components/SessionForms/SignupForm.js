@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // import './SessionForm.css';
 import { signup, clearSessionErrors } from '../../store/session';
 import { closeModal } from "../../store/ui";
-import './SignupForm.css'
+import './LoginForm.css';
 
 function SignupForm () {
   const [email, setEmail] = useState('');
@@ -58,52 +58,42 @@ function SignupForm () {
     <>
       { (modal === "signup") &&
         <div className="modal-body" onClick={() => dispatch(closeModal())}>
-          <form className="session-form" onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit}>
-            <h2>Sign Up Form</h2>
-            <div className="errors">{errors?.email}</div>
-            <label>
-              <span>Email</span>
+          <div className='wrapper'>
+            <form className="session-form signup-session-form" onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit}>
+              <h2>Sign Up Form</h2>
+              <div className="errors">{errors?.email}</div>
               <input type="text"
                 value={email}
                 onChange={update('email')}
                 placeholder="Email"
               />
-            </label>
-            <div className="errors">{errors?.username}</div>
-            <label>
-              <span>Username</span>
+              <div className="errors">{errors?.username}</div>
               <input type="text"
                 value={username}
                 onChange={update('username')}
                 placeholder="Username"
               />
-            </label>
-            <div className="errors">{errors?.password}</div>
-            <label>
-              <span>Password</span>
+              <div className="errors">{errors?.password}</div>
               <input type="password"
                 value={password}
                 onChange={update('password')}
                 placeholder="Password"
               />
-            </label>
-            <div className="errors">
-              {password !== password2 && 'Confirm Password field must match'}
-            </div>
-            <label>
-              <span>Confirm Password</span>
+              <div className="errors">
+                {password !== password2 && 'Confirm Password field must match'}
+              </div>
               <input type="password"
                 value={password2}
                 onChange={update('password2')}
                 placeholder="Confirm Password"
               />
-            </label>
-            <input
-              type="submit"
-              value="Sign Up"
-              disabled={!email || !username || !password || password !== password2}
-            />
-          </form>
+              <input
+                type="submit"
+                value="Sign Up"
+                disabled={!email || !username || !password || password !== password2}
+              />
+            </form>
+          </div>
         </div>
       }
     </>

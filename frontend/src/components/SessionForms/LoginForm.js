@@ -34,32 +34,34 @@ function LoginForm () {
     <>
       { (modal === "login") && 
         <div className="modal-body" onClick={() => dispatch(closeModal())}>
-          <form className="session-form" onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit}>
-            <h2>Log In Form</h2>
-            <div className="errors">{errors?.email}</div>
-            {/* <label>
-              <span>Email</span> */}
+          <div className='wrapper'>
+            <form className="session-form" onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit}>
+              <h2>Log In Form</h2>
+              <div className="errors">{errors?.email}</div>
+              {/* <label>
+                <span>Email</span> */}
               <input type="text"
                 value={email}
                 onChange={update('email')}
                 placeholder="Email"
               />
-            {/* </label> */}
-            <div className="errors">{errors?.password}</div>
-            {/* <label>
-              <span>Password</span> */}
+              {/* </label> */}
+              <div className="errors">{errors?.password}</div>
+              {/* <label>
+                <span>Password</span> */}
               <input type="password"
                 value={password}
                 onChange={update('password')}
                 placeholder="Password"
               />
-            {/* </label> */}
-            <input
-              type="submit"
-              value="Log In"
-              disabled={!email || !password}
-            />
-          </form>
+              {/* </label> */}
+              <input
+                type="submit"
+                value="Log In"
+                disabled={!email || !password}
+              />
+            </form>
+          </div>
         </div>
       } 
     </>
