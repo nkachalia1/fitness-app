@@ -1,0 +1,23 @@
+.fitness-profile {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  /* Additional styling based on your preferences can be added here */
