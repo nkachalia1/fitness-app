@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 // import './NavBar.css';
 import { logout, login } from '../../store/session';
-import { openModal, closeModal } from "../../store/ui";
+import { openModal } from "../../store/ui";
 
 function NavBar () {
   debugger
@@ -81,7 +81,7 @@ function NavBar () {
 
   return (
     <>
-      <h1 style={{ color: 'blue', textAlign: 'center' }}>Fitness App</h1>
+      {/* <h1 style={{ color: 'blue', textAlign: 'center' }}>Fitness App</h1> */}
       {getLinks()}
     </>
   );

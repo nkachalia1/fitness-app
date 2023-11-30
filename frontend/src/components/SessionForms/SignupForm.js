@@ -12,6 +12,8 @@ function SignupForm () {
   const [password2, setPassword2] = useState('');
   const errors = useSelector(state => state.errors.session);
   const modal = useSelector(state => state.ui.modal); 
+  const user = useSelector(state => state.session.user);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -56,7 +58,7 @@ function SignupForm () {
 
   return (
     <>
-      { (modal === "signup") &&
+      { (modal === "signup" && !user) &&
         <div className="modal-body" onClick={() => dispatch(closeModal())}>
           <div className='wrapper'>
             <form className="session-form signup-session-form" onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit}>

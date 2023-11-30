@@ -1,0 +1,164 @@
+.bg-bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .bg-bubbles li {
+    position: absolute;
+    list-style: none;
+    display: block;
+    width: 40px;
+    height: 40px;
+    /* background-color: rgba(255, 255, 255, 0.15); */
+    background-color: rgba(152, 98, 98, 0.15);
+    bottom: -160px;
+    -webkit-animation: square 25s infinite;
+    animation: square 25s infinite;
+    -webkit-transition-timing-function: linear;
+    transition-timing-function: linear;
+    z-index: 2;
+  }
+  
+  .bg-bubbles li:nth-child(1) {
+    left: 10%;
+  }
+  
+  .bg-bubbles li:nth-child(2) {
+    left: 20%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 2s;
+    animation-duration: 17s;
+  }
+  
+  .bg-bubbles li:nth-child(3) {
+    left: 25%;
+    animation-delay: 4s;
+  }
+  
+  .bg-bubbles li:nth-child(4) {
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-duration: 22s;
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+  
+  .bg-bubbles li:nth-child(5) {
+    left: 70%;
+  }
+  
+  .bg-bubbles li:nth-child(6) {
+    left: 80%;
+    width: 120px;
+    height: 120px;
+    animation-delay: 3s;
+    background-color: rgba(255, 255, 255, 0.20);
+  }
+  
+  .bg-bubbles li:nth-child(7) {
+    left: 32%;
+    width: 160px;
+    height: 160px;
+    animation-delay: 7s;
+  }
+  
+  .bg-bubbles li:nth-child(8) {
+    left: 55%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 15s;
+    animation-duration: 40s;
+  }
+  
+  .bg-bubbles li:nth-child(9) {
+    left: 25%;
+    width: 10px;
+    height: 10px;
+    animation-delay: 2s;
+    animation-duration: 40s;
+    background-color: rgba(255, 255, 255, 0.30);
+  }
+  
+  .bg-bubbles li:nth-child(10) {
+    left: 90%;
+    width: 160px;
+    height: 160px;
+    animation-delay: 11s;
+  }
+  
+  @-webkit-keyframes square {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-700px) rotate(600deg);
+    }
+  }
+  
+  @keyframes square {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-700px) rotate(600deg);
+    }
+  }
+
+
+
+
+
+  /*header設定*/
+#header{
+  position: relative;/*h1の中央寄せ配置の起点とするためのrelative*/
+  height: 100vh;/*高さを全画面にあわせる*/
+} 
+
+#video-area{
+  position: fixed;
+  z-index: -1;/*最背面に設定*/
+  top: 0;
+  right:0;
+  left:0;
+  bottom:0;
+  overflow: hidden;
+}
+
+#video {
+  /*天地中央配置*/
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*縦横幅指定*/
+  width: 177.77777778vh; /* 16:9 の幅→16 ÷ 9＝ 177.77% */
+  height: 56.25vw; /* 16:9の幅 → 9 ÷ 16 = 56.25% */
+  min-height: 100%;
+  min-width: 100%;
+}
+
+/*見出し設定*/
+/* h1{ */
+  /*要素の配置*/
+  /* position:absolute; */
+  /*要素を天地中央寄せ*/
+  /* top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%); */
+  /*見た目の調整*/
+  /* color:#fff;
+  text-shadow: 0 0 15px #666;
+} */
+
+/*========= レイアウトのためのCSS ===============*/
+
+#container{
+background:#fff;
+padding:300px 0;
+}

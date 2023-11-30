@@ -12,6 +12,7 @@ function LoginForm () {
   const errors = useSelector(state => state.errors.session);
   const dispatch = useDispatch();
   const modal = useSelector(state => state.ui.modal);
+  const user = useSelector(state => state.session.user);
 
   useEffect(() => {
     return () => {
@@ -26,13 +27,12 @@ function LoginForm () {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(closeModal())
     dispatch(login({ email, password }));
   }
 
   return (
     <>
-      { (modal === "login") && 
+      { (modal === "login" && !user ) && 
         <div className="modal-body" onClick={() => dispatch(closeModal())}>
           <div className='wrapper'>
             <form className="session-form" onClick={(e) => e.stopPropagation()} onSubmit={handleSubmit}>

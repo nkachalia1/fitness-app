@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Switch } from 'react-router-dom';
+import { Switch, useLocation } from 'react-router-dom';
 // import { Route, Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import { AuthRoute, ProtectedRoute } from './components/routes/routes';
 // import { useSelector } from 'react-redux';
@@ -24,9 +24,13 @@ function App() {
   }, [dispatch]);
   // const loggedIn = useSelector(state => !!state.session.user);
 
+  const location = useLocation();
+  const isTopPage = location.pathname === '/';
+
   return loaded && (
     <>
-      <NavBar />
+      {/* <MainPage /> */}
+      {!isTopPage && <NavBar />}
       <LoginForm />
       <SignupForm />
       <Switch>
@@ -34,6 +38,7 @@ function App() {
           {loggedIn ? <UserProfile /> : <Redirect to="/login" />}
         </Route> */}
         <AuthRoute exact path="/" component={MainPage} />
+        {/* <AuthRoute exact path="/navbar" component={NavBar} /> */}
         <AuthRoute exact path="/login" component={LoginForm} />
         <AuthRoute exact path="/signup" component={SignupForm} />
         <ProtectedRoute exact path="/runs" component={Runs} />
