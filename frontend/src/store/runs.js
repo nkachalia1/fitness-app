@@ -137,7 +137,6 @@ export const deleteRun = runId => async dispatch => {
     const res = await jwtFetch(`/api/runs/${runId}`, {
       method: 'DELETE'
     });
-    console.log(res)
 
     if (res.ok) {
       dispatch({
@@ -176,6 +175,7 @@ export const runErrorsReducer = (state = nullErrors, action) => {
 const runsReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
     switch(action.type) {
       case RECEIVE_RUNS:
+        debugger
         return { ...state, all: action.runs, new: undefined};
       case RECEIVE_USER_RUNS:
         return { ...state, user: action.runs, new: undefined};
@@ -189,10 +189,13 @@ const runsReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
           return {...state, errors: action.payload};
         case FETCH_RUN_SUCCESS:
             return {...state, all: {...state.all, [action.payload._id]: action.payload}};
-          case DELETE_RUN_SUCCESS:
-              const newState = { ...state };
-              delete newState.all[action.payload];
-              return newState;
+        case DELETE_RUN_SUCCESS:
+            let newState = { ...state}
+          debugger
+            newState = Object.values(state.all);
+            delete newState.filter(run => run._id !== action.payload); 
+            debugger
+            return newState;
       default:
         return state;
     }

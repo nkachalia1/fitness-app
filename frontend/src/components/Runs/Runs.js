@@ -6,6 +6,7 @@ import RunBox from './RunBox';
 
 function Runs() {
   const dispatch = useDispatch();
+  debugger
   const runs = useSelector(state => Object.values(state.runs.all));
   // runs.map((run) => {
   //   console.log(run.distance)

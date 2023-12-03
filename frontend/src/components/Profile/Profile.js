@@ -31,6 +31,5 @@ function Profile () {
     );
   }
 }
-debugger
 
 export default Profile;
