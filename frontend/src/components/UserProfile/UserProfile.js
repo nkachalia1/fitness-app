@@ -12,6 +12,13 @@ const UserProfile = () => {
   const runs = useSelector(state => state.runs.user);
   const [isLoading, setIsLoading] = useState(false);
 
+  const calculateAge = dob => {
+    if (!dob) return 'N/A';
+    const diff = Date.now() - new Date(dob).getTime();
+    const ageDate = new Date(diff); 
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  };
+
   useEffect(() => {
     const animatedBg = document.querySelector('.animated-background');
 
@@ -21,6 +28,8 @@ const UserProfile = () => {
       animatedBg.style.width = `${width}px`;
       animatedBg.style.height = `${height}px`;
     };
+
+
 
     resizeHandler(); // Set initial size
 
@@ -82,19 +91,19 @@ const UserProfile = () => {
             </div>
             <div className="detail-item">{user.email}</div>
             <div className="detail-item">
-              <span>Male</span> {/* Add user gender */}
+              <span>{user.gender || 'N/A'}</span> {/* Add user gender */}
             </div>
             <div className="detail-item">
-              <span>25 years old</span> {/* Add user age */}
+              <span>{calculateAge(user.dob)} years old</span> {/* Add user age */}
             </div>
             <div className="detail-item">
-              <span>New York, NY</span> {/* Add user location */}
+              <span>{user.city}, {user.state}</span> {/* Add user location */}
             </div>
             <div className="detail-item">
-              <span>6' 0"</span> {/* Add user height */}
+              <span>{user.height ? `${user.height} inches` : 'N/A'}</span> {/* Add user height */}
             </div>
             <div className="detail-item">
-              <span>180 lbs</span> {/* Add user weight */}
+              <span>{user.weight ? `${user.weight} lbs` : 'N/A'}</span> {/* Add user weight */}
             </div>
           </div>
         </div>
