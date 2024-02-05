@@ -130,4 +130,20 @@ router.get('/user/profile', async (req, res) => {
   }
 });
 
+router.put('/update/:userId', async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+    const updateData = req.body; // Include all updatable fields like gender, dob, etc.
+
+    const user = await User.findByIdAndUpdate(userId, updateData, { new: true });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    
+    res.json(user);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
